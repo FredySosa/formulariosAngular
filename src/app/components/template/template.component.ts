@@ -3,9 +3,29 @@ import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
-  styles: []
+  styles: [`
+    .ng-invalid.ng-touched:not(form) {
+      border: 1px solid red;
+    }
+  `]
 })
 export class TemplateComponent implements OnInit {
+
+  usuario: Object = {
+    nombre: null,
+    apellido: null,
+    correo: null,
+    pais: '',
+    sexo: 'Hombre',
+    acepta: false
+  };
+
+  sexos = ['Hombre', 'Mujer', 'Sin definir'];
+
+  paises = [
+    {codigo: 'MEX', nombre: 'México'},
+    {codigo: 'GUA', nombre: 'Guatemala'},
+    {codigo: 'COL', nombre: 'Colombia'}];
 
   constructor() {
   }
@@ -14,8 +34,9 @@ export class TemplateComponent implements OnInit {
   }
 
   guardar(forma: any) {
-    console.log('Obj we');
     console.log(forma);
+    console.log('forma', forma.value);
+    console.log('usuario', this.usuario);
   }
 
 }
